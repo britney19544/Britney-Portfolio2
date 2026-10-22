@@ -1,0 +1,96 @@
+/* ============================================================
+   4. NAVBAR
+   ============================================================ */
+
+.nav {
+  position: sticky;
+  top: calc(env(safe-area-inset-top, 0px) + 1rem);
+  z-index: 40;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 0.6rem 0.55rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid var(--glass-b);
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.nav .brand {
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+/* Packed closer together */
+.nav nav {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.nav nav a {
+  text-decoration: none;
+  color: var(--ink);
+  position: relative;
+}
+
+/* Custom underline effect on hover (instead of default browser underline) */
+.nav nav a:not(.btn) {
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  transition: color 0.2s ease;
+}
+
+.nav nav a:not(.btn)::after {
+  content: '';
+  position: absolute;
+  bottom: 0.35rem;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent);
+  transition: width 0.25s ease, left 0.25s ease;
+  border-radius: 2px;
+}
+
+.nav nav a:not(.btn):hover::after,
+.nav nav a.on::after {
+  width: 60%;
+  left: 20%;
+}
+
+.nav nav a:not(.btn):hover {
+  background: transparent;
+  color: var(--accent);
+}
+
+.nav nav a.on {
+  color: var(--accent);
+}
+
+.nav .btn {
+  padding: 0.55rem 1.1rem;
+  padding-left: 1.2rem;
+  margin-left: 0.5rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.nav a.btn {
+  transition: filter 0.2s, transform 0.2s;
+}
+
+.nav a.btn:hover {
+  color: var(--accent-ink);
+  filter: brightness(0.9);
+  transform: translateY(-1px);
+}

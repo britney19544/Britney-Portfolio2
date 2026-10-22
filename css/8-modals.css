@@ -1,0 +1,326 @@
+/* ============================================================
+   8. POPUPS: certificates, organizations, Taniku, and the big image preview
+   ============================================================ */
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+.modal {
+  padding: 0;
+  border: 1px solid var(--glass-b);
+  color: var(--ink);
+  width: min(46rem, 92vw);
+  max-height: 86vh;
+  margin: auto;
+  overflow: auto;
+  background: linear-gradient(var(--glass), var(--glass)), var(--bg1);
+  /* Firefox Scrollbar Support */
+  scrollbar-width: thin;
+  scrollbar-color: var(--glass-b) transparent;
+}
+
+/* ============================================================
+   CERTIFICATES POPUP
+   ============================================================ */
+#certs,
+.modal-certs {
+  width: min(92rem, 98vw) !important;
+  max-width: 98vw !important;
+  max-height: 96vh !important;
+}
+
+#certs .mh h3 {
+  font-size: 1.75rem;
+}
+
+#certs .sub {
+  font-size: 1.05rem;
+}
+
+#certs .mi,
+.modal-certs .mi {
+  padding: 2.5rem !important;
+}
+
+#cert-modal .cgrid,
+.modal-certs .cgrid {
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.5rem;
+}
+
+/* Custom Scrollbar for General Modals (Chrome, Safari, Edge) */
+.modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 10px 0;
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background: var(--glass-b);
+  border-radius: 999px;
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  background-clip: padding-box;
+}
+
+.modal::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+  background-clip: padding-box;
+}
+
+/* ============================================================
+   ORGANIZATIONS POPUP SCROLLBAR & CONTAINER FIX
+   ============================================================ */
+#orgs {
+  padding: 0;
+  border: 1px solid var(--glass-b);
+  color: var(--ink);
+  width: min(46rem, 92vw);
+  max-height: 86vh;
+  margin: auto;
+  border-radius: 24px;
+  background: linear-gradient(var(--glass), var(--glass)), var(--bg1);
+  overflow: hidden;
+}
+
+/* Only use flex layout while open; a plain `display: flex` on #orgs overrides
+   the browser's dialog:not([open]) { display: none } and shows it at the page bottom. */
+#orgs[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+#orgs .mi {
+  padding: 1.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(86vh - 2rem);
+  scrollbar-width: thin;
+  scrollbar-color: var(--glass-b) transparent;
+}
+
+#orgs .mi::-webkit-scrollbar {
+  width: 5px;
+}
+
+#orgs .mi::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 0.5rem 0;
+}
+
+#orgs .mi::-webkit-scrollbar-thumb {
+  background: var(--glass-b);
+  border-radius: 999px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  background-clip: padding-box;
+}
+
+#orgs .mi::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+  background-clip: padding-box;
+}
+
+/* ============================================================
+   SHARED MODAL INNER STYLES
+   ============================================================ */
+.modal::backdrop {
+  background: rgba(10, 30, 36, 0.4);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.mi {
+  padding: 1.5rem;
+}
+
+.mh {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.mh h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.x {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1px solid var(--glass-b);
+  background: var(--glass);
+  color: var(--ink);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal .sub {
+  margin-bottom: 1.2rem;
+}
+
+.cgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1rem;
+}
+
+.cgrid figure {
+  margin: 0;
+}
+
+.cgrid img,
+.cgrid .ph {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 1px solid var(--glass-b);
+}
+
+.cgrid .ph {
+  display: none;
+  place-items: center;
+  text-align: center;
+  padding: 0.8rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  border: 2px dashed var(--glass-b);
+}
+
+.cgrid .missing img {
+  display: none;
+}
+
+.cgrid .missing .ph {
+  display: grid;
+}
+
+.cgrid figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.cgrid figcaption small {
+  display: block;
+  color: var(--muted);
+}
+
+/* ============================================================
+   LIGHTBOX PREVIEW
+   ============================================================ */
+.lb {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: auto;
+  max-width: 96vw;
+  max-height: 96vh;
+  color: #fff;
+  overflow: visible;
+}
+
+.lb::backdrop {
+  background: rgba(6, 20, 24, 0.72);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+.lb img {
+  display: block;
+  max-width: 92vw;
+  max-height: 78vh;
+  border-radius: 16px;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+  margin: 0 auto;
+  animation: pop 0.25s ease-out;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.lb .cap {
+  text-align: center;
+  margin: 0.8rem 0 0;
+  font-weight: 600;
+}
+
+.lb .x {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + 1rem);
+  right: 1rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.lb .nv {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.lb .prev {
+  left: 1rem;
+}
+
+.lb .next {
+  right: 1rem;
+}
+
+.cgrid a {
+  cursor: zoom-in;
+}
+
+/* ============================================================
+   ORGANIZATION LIST ITEMS
+   ============================================================ */
+.olist article {
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--glass-b);
+}
+
+.olist h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.olist small {
+  display: block;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 0.85rem;
+  margin-top: 0.1rem;
+}
+
+.olist p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}

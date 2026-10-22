@@ -1,0 +1,24 @@
+/* ============================================================
+   1. COLORS AND THEME
+   Change colors here. Light mode is the first block, dark mode is the 2nd and 3rd.
+   --accent  = main teal color (buttons, highlights)
+   --ink     = main text color      --muted = softer text color
+   --bg1/--bg2 = page background gradient
+   --b1/--b2/--b3 = the 3 soft blurred color blobs behind the glass
+   --glass   = how see-through the glass cards are
+   ============================================================ */
+
+:root{
+  --bg1:#000000; --bg2:#07060d; --ink:#eaf7f5; --muted:#9bbcc0; --accent:#4fe0cf; --accent-ink:#06282b;
+  --glass:rgba(255,255,255,.06); --glass-b:rgba(255,255,255,.14); --glass-s:rgba(0,0,0,.5);
+  --b1:#0f8f84; --b2:#5a43c9; --b3:#b0603a;
+  color-scheme:dark; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg1:#000000; --bg2:#07060d; --ink:#eaf7f5; --muted:#9bbcc0; --accent:#4fe0cf; --accent-ink:#06282b;
+  --glass:rgba(255,255,255,.06); --glass-b:rgba(255,255,255,.14); --glass-s:rgba(0,0,0,.5);
+  --b1:#0f8f84; --b2:#5a43c9; --b3:#b0603a; color-scheme:dark}}
+
+:root[data-theme="dark"]{--bg1:#000000;--bg2:#07060d;--ink:#eaf7f5;--muted:#9bbcc0;--accent:#4fe0cf;--accent-ink:#06282b;--glass:rgba(255,255,255,.06);--glass-b:rgba(255,255,255,.14);--glass-s:rgba(0,0,0,.5);--b1:#0f8f84;--b2:#5a43c9;--b3:#b0603a;color-scheme:dark}

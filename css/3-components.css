@@ -1,0 +1,138 @@
+/* ============================================================
+   3. COMPONENTS: glass effect, buttons, project cards, tags
+   ============================================================ */
+
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--glass-b);
+  border-radius: 28px;
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, .65), inset 0 -1px 0 rgba(255, 255, 255, .12), 0 18px 40px -18px var(--glass-s);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background: var(--bg1); }
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: .7rem 1.3rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .45);
+}
+
+.btn.g {
+  background: var(--glass);
+  color: var(--ink);
+  border: 1px solid var(--glass-b);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.card {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: -.02em;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-top: auto;
+  padding-top: .5rem;
+}
+
+.tags span {
+  background: rgba(255, 255, 255, .35);
+  border: 1px solid var(--glass-b);
+  border-radius: 999px;
+  padding: .15rem .7rem;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+.card a.l {
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.card a.l:hover {
+  text-decoration: underline;
+}
+
+.pill {
+  align-self: flex-start;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-radius: 999px;
+  padding: .1rem .7rem;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+button.btn {
+  border: 0;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* 1. Global hover state for all glass cards and boxes */
+.card:hover,
+.glass:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+/* 2. Direct override for your exact header class (.nav.glass) */
+header.nav.glass:hover,
+.nav.glass:hover {
+  transform: none;
+  border-color: var(--glass-b);
+}
+
+.open-certs,
+.open-card {
+  cursor: pointer;
+}
+
+.open-certs .btn,
+.open-card .btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.card button.l {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.card button.l:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,27 @@
+/* ============================================================
+   7. CONTACT: the "Let’s build something together" box
+   ============================================================ */
+
+.cta{padding:3rem 1.5rem;text-align:center;margin-top:1rem}
+
+.cta p{color:var(--muted);margin:0 auto 1.5rem;max-width:30rem}
+
+.cta .btn{margin:.25rem}
+
+.cta{transition:border-color .25s}
+
+.cta:hover{border-color:var(--accent)}
+
+.cta h2,.cta p{transition:color .25s}
+
+.cta .btn{transition:background-color .25s,color .25s,border-color .25s,transform .2s}
+
+.cta .btn:hover,.cta .btn:focus-visible{background:var(--hc);border-color:var(--hc);color:#fff;transform:translateY(-3px)}
+
+.cta a:nth-of-type(1){--hc:#ff6b57}
+
+.cta a:nth-of-type(2){--hc:#0a66c2}
+
+.cta a:nth-of-type(3){--hc:#7b61ff}
+
+.cta a:nth-of-type(4){--hc:#1fa971}

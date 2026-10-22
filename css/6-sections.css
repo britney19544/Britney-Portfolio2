@@ -1,0 +1,19 @@
+/* ============================================================
+   6. SECTIONS: headings and the project/skills/experience grid
+   ============================================================ */
+
+section{padding:4.5rem 0 0}
+
+h2{font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.03em;line-height:1.1;margin:0 0 .5rem;font-weight:800}
+
+.sub{color:var(--muted);max-width:70rem;margin:0 0 2rem}
+
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1.1rem}
+
+.c3{grid-column:span 3}
+
+.c2{grid-column:span 2}
+
+.c6{grid-column:span 6}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}

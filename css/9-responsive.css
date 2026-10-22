@@ -1,0 +1,14 @@
+/* ============================================================
+   9. RESPONSIVE + ACCESSIBILITY: phone layout and reduced motion (keep this last)
+   ============================================================ */
+
+@media(max-width:800px){
+  .hero{grid-template-columns:1fr;padding-top:2rem}.stack{height:auto;display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;align-items:center;width:100%}
+  .stack>*{position:static}
+  .phone{width:100%;max-width:18rem}
+  .ring{width:auto}
+  .stats{grid-template-columns:1fr 1fr;gap:1rem}.c3,.c2{grid-column:span 6}.two{grid-template-columns:1fr}
+  .nav nav a:not(.btn){display:none}
+}
+
+@media(prefers-reduced-motion:reduce){.rise{animation:none}.stack>*{animation:none}html{scroll-behavior:auto}}
