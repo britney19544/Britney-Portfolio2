@@ -20,10 +20,21 @@
 }
 
 .nav .brand {
-  font-weight: 800;
+  position: relative;
+  display: block;
+  width: 150px;          /* space reserved for the logo, so the links don't overlap it */
+  height: 2rem;          /* keeps the nav bar the same height as before */
   text-decoration: none;
-  font-size: 1.05rem;
-  color: var(--ink);
+}
+
+.nav .brand img {
+  position: absolute;
+  top: 50%;
+  left: -0.6rem;         /* more negative = further left */
+  transform: translateY(-50%);
+  height: 90px;          /* logo size, make it as big as you want */
+  width: auto;
+  max-width: none;       /* stops a global img rule from shrinking it */
 }
 
 /* Packed closer together */
